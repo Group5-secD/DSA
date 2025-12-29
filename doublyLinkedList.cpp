@@ -26,7 +26,38 @@ public:
 
     // INSERT operations
     void insertAtBeginning(int value);
-    void insertAtPosition(int value, int position);
+    void insertAtPosition(Node*& head, int data, int index){
+    Node* newNode = new Node(data);
+    newNode->data = data;
+    newNode->prev = nullptr;
+    newNode->next = nullptr;
+
+    if (index == 1) {
+        newNode->next = head;
+        if (head != nullptr)
+            head->prev = newNode;
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 1; i < index - 1 && temp != nullptr; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == nullptr) {
+        cout << "Invalid position\n";
+        return;
+    }
+
+    newNode->next = temp->next;
+    newNode->prev = temp;
+
+    if (temp->next != nullptr)
+        temp->next->prev = newNode;
+
+    temp->next = newNode;
+    }
     void insertAtEnd(int value);
 
     // DELETE operations
