@@ -48,7 +48,7 @@ public:
             tail->next = nullptr;    // Disconnect old last node
         }
 
-        cout << "Deleted " << temp->data << " from the end/.\n";
+        cout << "Deleted " << temp->data << " from the end.\n";
         delete temp;     
 }
 
@@ -57,7 +57,6 @@ public:
             cout << "List is empty.\n";
             return;
         }
-        
 
         Node* temp = head;
         cout << "List: ";
